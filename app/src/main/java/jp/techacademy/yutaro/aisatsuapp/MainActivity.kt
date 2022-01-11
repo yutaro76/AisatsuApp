@@ -8,18 +8,18 @@ import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener{
+class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-    button1.setOnClickListener(this)
+        button1.setOnClickListener(this)
 
     }
 
     override fun onClick(v: View) {
-        when(v. id){
-            R.id.button1 -> textView.text = showTimePickerDialog().toString()
+        when (v.id) {
+            R.id.button1 -> showTimePickerDialog()
         }
     }
 
@@ -28,11 +28,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
             this,
             TimePickerDialog.OnTimeSetListener { view, hour, minute ->
                 if (2 <= hour && hour <= 9) {
-                    print("おはよう")
+                    textView.text = "おはよう"
                 } else if (10 <= hour && hour <= 17) {
-                    print("おはよう")
+                    textView.text = "こんにちは"
                 } else {
-                    print("こんばんは")
+                    textView.text = "こんばんは"
                 }
             },
             13, 0, true)
@@ -40,4 +40,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
         timePickerDialog.show()
 
     }
+
+
+
 }
